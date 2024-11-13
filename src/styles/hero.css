@@ -1,0 +1,27 @@
+.hero {
+  background-color: lightgreen;
+  max-height: 280px;
+
+  .hero-content {
+    padding-block: 32px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  p + p {
+    line-height: 1.6;
+  }
+
+  button {
+    margin-top: 16px;
+  }
+
+  img {
+    max-width: 260px;
+  }
+}

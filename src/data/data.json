@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Grilled Lamb Souvlaki",
+    "image": "https://www.aheadofthyme.com/wp-content/uploads/2020/06/greek-lamb-souvlaki-skewers-683x1024.jpg",
+    "description": "Tender pieces of marinated lamb grilled to perfection, served with warm pita bread and a side of tzatziki sauce.",
+    "price": "$18.99"
+  },
+  {
+    "name": "Falafel Plate",
+    "image": "https://www.whollytasteful.com/wp-content/uploads/2023/03/falafel-platter-featured.jpg",
+    "description": "Crispy falafel made from ground chickpeas and herbs, served with hummus, tabbouleh, and a side of pita bread.",
+    "price": "$14.50"
+  },
+  {
+    "name": "Greek Salad",
+    "image": "https://www.onehappydish.com/wp-content/uploads/2022/07/greek-salad-recipe.jpg",
+    "description": "A refreshing mix of cucumbers, tomatoes, red onions, Kalamata olives, and feta cheese, topped with a drizzle of olive oil and oregano.",
+    "price": "$12.75"
+  }
+]
