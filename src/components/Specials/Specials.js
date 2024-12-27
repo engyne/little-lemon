@@ -1,7 +1,7 @@
-import '../styles/specials.css';
-import data from '../data/data.json';
+import './specials.css';
+import data from '../../data/data.json';
 
-function Specials() {
+export function Specials() {
   return (
     <>
       <section className="content-center specials">
@@ -9,7 +9,7 @@ function Specials() {
         <div className='cards'>
           {
             data.map(item => (
-              <article>
+              <article key={item.name}>
                 <img src={item.image} alt={item.name} />
                 <section className='content'>
                   <header>
@@ -17,7 +17,7 @@ function Specials() {
                     <span className='price'>{item.price}</span>
                   </header>
                   <p className='description'>{item.description}</p>
-                  <button>Order now</button>
+                  <button className='primary-btn'>Order now</button>
                 </section>
               </article>
             ))
@@ -27,5 +27,3 @@ function Specials() {
     </>
   )
 }
-
-export default Specials;

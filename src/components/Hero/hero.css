@@ -1,5 +1,5 @@
 .hero {
-  background-color: lightgreen;
+  background-color: var(--fresh-green);
   max-height: 280px;
 
   .hero-content {
@@ -13,15 +13,19 @@
     font-size: 48px;
   }
 
-  p + p {
+  p {
     line-height: 1.6;
   }
 
-  button {
+  .reserve-btn {
     margin-top: 16px;
   }
 
   img {
     max-width: 260px;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 }

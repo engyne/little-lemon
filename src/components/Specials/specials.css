@@ -1,17 +1,27 @@
 .specials {
   margin-block: 52px;
 
+  > h1 {
+    margin-bottom: 16px;
+  }
+
   > .cards {
     display: flex;
     justify-content: space-between;
     gap: 16px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
    article {
     border-radius: 10px;
     border: 1px solid;
+    background-color: var(--soft-beige);
     overflow: hidden;
     flex: 1;
+    max-width: 400px;;
 
     display: flex;
     flex-direction: column;
@@ -34,9 +44,12 @@
     .description {
       margin-block: 12px;
     }
+    .price {
+      background-color: var(--fresh-green);
+    }
     img {
       width: 400px;
-      height: 200px;
+      height: 150px;
       object-fit: cover;
       background-size: cover;
       display: block;

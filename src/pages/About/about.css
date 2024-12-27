@@ -1,0 +1,15 @@
+.about {
+  padding-block: 32px;
+
+  h1, h2 {
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  > p {
+    margin-bottom: 16px;
+  }
+}

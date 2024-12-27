@@ -1,0 +1,58 @@
+.reservation {
+  margin-block: 32px;
+  fieldset {
+    padding: 24px;
+  }
+
+  label {
+    display: block;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    > input {
+      display: block;
+      width: 100%;
+      margin-top: 4px;
+      padding: 4px;
+    }
+    &.outdoor-table {
+      display: flex;
+      > span {
+        text-wrap: nowrap;
+      }
+      > input {
+        width: fit-content;
+        margin-left: 24px;
+      }
+    }
+  }
+
+  .done-svg {
+    width: 300px;
+  }
+  .reservation-done {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    h1 {
+      margin-bottom: 16px;
+    }
+
+  }
+
+  dl {
+    display: grid;
+    grid-gap: 4px 16px;
+    grid-template-columns: max-content;
+    font-size: 20px;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin: 0;
+    grid-column-start: 2;
+  }
+}

@@ -1,6 +1,6 @@
-import '../styles/footer.css';
+import './footer.css';
 
-function Footer() {
+export function Footer() {
   const NavLogo = '/assets/Logo.svg';
 
   return (
@@ -26,5 +26,3 @@ function Footer() {
     </>
   )
 }
-
-export default Footer;
