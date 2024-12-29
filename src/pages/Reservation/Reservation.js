@@ -1,31 +1,63 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './reservation.css'
 import {ReactComponent as Done} from '../../assets/done.svg';
+import {Button} from '../../components/Button';
+import {Input} from '../../components/Input';
 
 export function Reservation() {
 
   const [form, setForm] = useState({
     name: '',
+    email: '',
+    phone: '',
     people: 1,
     time: '',
     date: '',
     outdoorTable: false,
   });
   const [isReservationDone, setIsReservationDone] = useState(false);
+  const [validationState, setValidationState] = useState({
+    email: {
+      invalid: false,
+      validationMessage: '',
+    },
+    time: {
+      invalid: false,
+      validationMessage: ''
+    }
+  });
 
   const timeInputRef = useRef(null);
+  const emailInputRef = useRef(null);
   const submitDisabled = useMemo(() => {
-    return Object.keys(form).some(k => !form[k]) || form.people === '0' ||
-      !timeInputRef.current.validity.valid;
+    return Object.keys(form).some(k => !form[k] && k !== 'outdoorTable') ||
+      form.people === '0' ||
+      !timeInputRef.current.validity.valid ||
+      !emailInputRef.current.validity.valid;
   }, [form]);
 
+
+  useEffect(() => {
+    console.log(emailInputRef.current);
+    if (emailInputRef.current) {
+      console.log(11);
+      setValidationState(state => ({
+        ...state,
+        email: {
+          invalid: !emailInputRef.current.validity.valid,
+          validationMessage: emailInputRef.current.validationMessage,
+        }
+      }));
+    }
+  }, [form.email]);
+
   const handleChange = ({ target: { name, value }}) => {
-    setForm({ ...form, [name]: value })
+    setForm({ ...form, [name]: name === 'outdoorTable' ? !form.outdoorTable : value })
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form);
+    if (submitDisabled) return;
     setIsReservationDone(true);
   }
 
@@ -40,55 +72,63 @@ export function Reservation() {
         <form className="content-center">
           <fieldset>
             <legend>Reserve a table</legend>
-            <label>
-              Name:
-              <input
-                type="text"
-                placeholder="name"
-                value={form.name}
-                name="name"
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              Number of people:
-              <input
-                type="number"
-                min="1"
-                placeholder="1"
-                name='people'
-                value={form.people}
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              Date:
-              <input
-                type="date"
-                onChange={handleChange} 
-                name="date"
-                min={getMinDate()}
-              />
-            </label>
-            <label>
-              Time:
-              <input
-                type="time"
-                min="19:00"
-                max="23:00"
-                name="time"
-                value={form.time}
-                onChange={handleChange}
-                ref={timeInputRef}
-              />
-              { !timeInputRef.current?.validity?.valid &&
-                <small className="input-error-message">{timeInputRef.current?.validationMessage}</small>
-              }
-            </label>
+            <Input
+              label="Name"
+              type="text"
+              placeholder="name"
+              name="name"
+              onChange={handleChange}
+            />
+            <Input
+              ref={emailInputRef}
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="email"
+              value={form.email}
+              invalid={!emailInputRef.current?.validity.valid}
+              validationMessage={emailInputRef.current?.validationMessage}
+              onChange={handleChange}
+            />
+            <Input
+              label="Phone number"
+              name="phone"
+              placeholder="phone number"
+              value={form.phone}
+              onChange={handleChange}
+            />
+            <Input
+              label="Number of people"
+              name="people"
+              placeholder="1"
+              value={form.people}
+              onChange={handleChange}
+            />
+            <Input
+              label="Date"
+              name="date"
+              type="date"
+              min={getMinDate()}
+              onChange={handleChange}
+            />
+            <Input
+              ref={timeInputRef}
+              label="Time"
+              name="time"
+              type="time"
+              min="19:00"
+              max="23:00"
+              value={form.time}
+              invalid={!timeInputRef.current?.validity.valid}
+              validationMessage={timeInputRef.current?.validationMessage}
+              onChange={handleChange}
+            />
             <label className='outdoor-table'>
-              <span>Need outdoor table?:</span> <input type='checkbox' value={form.outdoorTable} />
+              <span>Need outdoor table?:</span> <input type='checkbox' name='outdoorTable' value={form.outdoorTable} onChange={handleChange} />
             </label>
-            <button disabled={submitDisabled} onClick={handleSubmit} className='primary-btn'>Submit</button>
+            <Button disabled={submitDisabled} onClick={handleSubmit} type="primary">
+              Submit
+            </Button>
           </fieldset>
         </form>
       </>
@@ -102,6 +142,10 @@ export function Reservation() {
         <dl>
           <dt>Name:</dt>
           <dd>{form.name}</dd>
+          <dt>Email:</dt>
+          <dd>{form.email}</dd>
+          <dt>Phone number:</dt>
+          <dd>{form.phone}</dd>
 
           <dt>People:</dt>
           <dd>{form.people}</dd>
@@ -110,6 +154,8 @@ export function Reservation() {
           <dd>{ new Date(form.date).toLocaleDateString() }</dd>
           <dt>Time:</dt>
           <dd>{ form.time }</dd>
+          <dt>Outdoor table:</dt>
+          <dd>{ form.outdoorTable ? 'Yes' : 'No' }</dd>
         </dl>
       </div>
     );

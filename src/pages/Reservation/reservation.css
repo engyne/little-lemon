@@ -32,7 +32,7 @@
   }
   .reservation-done {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 2rem;
 
@@ -44,7 +44,7 @@
 
   dl {
     display: grid;
-    grid-gap: 4px 16px;
+    grid-gap: 10px;
     grid-template-columns: max-content;
     font-size: 20px;
   }
