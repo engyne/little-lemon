@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import './reservation.css'
 import {ReactComponent as Done} from '../../assets/done.svg';
 import {Button} from '../../components/Button';
@@ -16,16 +16,6 @@ export function Reservation() {
     outdoorTable: false,
   });
   const [isReservationDone, setIsReservationDone] = useState(false);
-  const [validationState, setValidationState] = useState({
-    email: {
-      invalid: false,
-      validationMessage: '',
-    },
-    time: {
-      invalid: false,
-      validationMessage: ''
-    }
-  });
 
   const timeInputRef = useRef(null);
   const emailInputRef = useRef(null);
@@ -35,21 +25,6 @@ export function Reservation() {
       !timeInputRef.current.validity.valid ||
       !emailInputRef.current.validity.valid;
   }, [form]);
-
-
-  useEffect(() => {
-    console.log(emailInputRef.current);
-    if (emailInputRef.current) {
-      console.log(11);
-      setValidationState(state => ({
-        ...state,
-        email: {
-          invalid: !emailInputRef.current.validity.valid,
-          validationMessage: emailInputRef.current.validationMessage,
-        }
-      }));
-    }
-  }, [form.email]);
 
   const handleChange = ({ target: { name, value }}) => {
     setForm({ ...form, [name]: name === 'outdoorTable' ? !form.outdoorTable : value })
