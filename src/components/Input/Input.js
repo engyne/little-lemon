@@ -1,20 +1,30 @@
 import React from 'react';
 
-export const Input = React.forwardRef((props, ref) => {
+export const Input = React.forwardRef(({
+  label,
+  type,
+  placeholder,
+  value,
+  name,
+  onChange,
+  validationMessage,
+  invalid,
+  ...rest
+}, ref) => {
   return (
     <label>
-      {props.label}:
+      {label}:
       <input
-        {...props}
+        {...rest}
         ref={ref}
-        type={props.type}
-        placeholder={props.placeholder}
-        value={props.value}
-        name={props.name}
-        onChange={props.onChange}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        name={name}
+        onChange={onChange}
       />
-      {props.invalid && (
-        <small className="input-error-message">{props.validationMessage}</small>
+      {invalid && (
+        <small className="input-error-message">{validationMessage}</small>
       )}
     </label>
   );

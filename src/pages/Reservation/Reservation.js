@@ -101,7 +101,12 @@ export function Reservation() {
             <label className='outdoor-table'>
               <span>Need outdoor table?:</span> <input type='checkbox' name='outdoorTable' value={form.outdoorTable} onChange={handleChange} />
             </label>
-            <Button disabled={submitDisabled} onClick={handleSubmit} type="primary">
+            <Button
+              className="submit"
+              disabled={submitDisabled}
+              variant="primary"
+              onClick={handleSubmit}
+            >
               Submit
             </Button>
           </fieldset>

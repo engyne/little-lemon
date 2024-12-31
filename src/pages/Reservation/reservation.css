@@ -27,6 +27,11 @@
     }
   }
 
+  .submit {
+    width: 100%;
+    height: 42px;
+  }
+
   .done-svg {
     width: 300px;
   }

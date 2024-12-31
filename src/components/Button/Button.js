@@ -1,10 +1,20 @@
 import './Button.css';
 
 export function Button(props) {
+
+  function getClass() {
+    return props.variant === 'primary' ? 'primary-btn' : null;
+  }
+
   return <button
-    disabled={props.disabled} 
+    data-testid="button"
+    disabled={props.disabled}
     onClick={props.onClick} 
-    className={[ props.type === 'primary' && 'primary-btn']}
+    type="button"
+    className={[
+      getClass(),
+      props.className
+    ].filter(Boolean).join(' ')}
     >
       {props.children}
     </button>;
