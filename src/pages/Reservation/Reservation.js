@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import './reservation.css'
 import {ReactComponent as Done} from '../../assets/done.svg';
 import {Button} from '../../components/Button';
-import {Input} from '../../components/Input';
+import {InputWithLabel} from '../../components/InputWithLabel';
 
 export function Reservation() {
 
@@ -47,14 +47,14 @@ export function Reservation() {
         <form className="content-center">
           <fieldset>
             <legend>Reserve a table</legend>
-            <Input
+            <InputWithLabel
               label="Name"
               type="text"
               placeholder="name"
               name="name"
               onChange={handleChange}
             />
-            <Input
+            <InputWithLabel
               ref={emailInputRef}
               label="Email"
               name="email"
@@ -65,28 +65,28 @@ export function Reservation() {
               validationMessage={emailInputRef.current?.validationMessage}
               onChange={handleChange}
             />
-            <Input
+            <InputWithLabel
               label="Phone number"
               name="phone"
               placeholder="phone number"
               value={form.phone}
               onChange={handleChange}
             />
-            <Input
+            <InputWithLabel
               label="Number of people"
               name="people"
               placeholder="1"
               value={form.people}
               onChange={handleChange}
             />
-            <Input
+            <InputWithLabel
               label="Date"
               name="date"
               type="date"
               min={getMinDate()}
               onChange={handleChange}
             />
-            <Input
+            <InputWithLabel
               ref={timeInputRef}
               label="Time"
               name="time"

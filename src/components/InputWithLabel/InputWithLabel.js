@@ -1,6 +1,6 @@
-import React from 'react';
+import { forwardRef } from 'react';
 
-export const Input = React.forwardRef(({
+export const InputWithLabel = forwardRef(({
   label,
   type,
   placeholder,
