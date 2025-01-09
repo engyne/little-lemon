@@ -7,7 +7,9 @@ export function Button(props) {
   }
 
   return <button
+    {...props}
     data-testid="button"
+    aria-label="On Click"
     disabled={props.disabled}
     onClick={props.onClick} 
     type="button"

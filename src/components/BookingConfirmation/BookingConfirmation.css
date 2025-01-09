@@ -1,0 +1,30 @@
+.booking-confirmation {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+
+  h1 {
+    margin-bottom: 16px;
+    font-size: 32px;
+  }
+
+  dl {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    font-size: 20px;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin: 0;
+    grid-column-start: 2;
+  }
+
+  .done-svg {
+    width: 300px;
+  }
+}

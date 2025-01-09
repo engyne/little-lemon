@@ -1,11 +1,43 @@
 import './specials.css';
-import data from '../../data/data.json';
+import { useEffect, useState } from 'react';
 
 export function Specials() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+  function fetchData() {
+    return new Promise(resolve => {
+      const timer = setTimeout(() => {
+        console.log('fetchData');
+        fetch('data.json')
+          .then(res => res.json())
+          .then(data => resolve({data, timer}))
+      }, 300);
+    })
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    let timerToClear;
+    fetchData()
+      .then(({data, timer}) => {
+        setData(data);
+        timerToClear = timer;
+      })
+      .finally(() => setLoading(false));
+
+
+    fetch('https://raw.githubusercontent.com/courseraap/capstone/main/api.js')
+      .then(console.log)
+
+    return () => clearTimeout(timerToClear);
+  }, []);
+
   return (
     <>
       <section className="content-center specials">
-        <h1>Specials</h1>
+        <h1>{loading ? 'Loading...' : 'Specials'}</h1>
         <div className='cards'>
           {
             data.map(item => (

@@ -1,11 +1,17 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;;
-  width: 100%;
+  border-top: 1px solid lightgray;
+  margin-top: 40px;
 
-  img {
-    display: block;
-    margin-bottom: 12px;
+  .container {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    img {
+      display: block;
+      margin-bottom: 12px;
+    }
   }
 }

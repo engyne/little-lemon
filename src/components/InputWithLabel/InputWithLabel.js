@@ -15,16 +15,17 @@ export const InputWithLabel = forwardRef(({
     <label>
       {label}:
       <input
-        {...rest}
+        data-testid="input-with-label"
         ref={ref}
         type={type}
         placeholder={placeholder}
         value={value}
         name={name}
         onChange={onChange}
+        {...rest}
       />
       {invalid && (
-        <small className="input-error-message">{validationMessage}</small>
+        <small className="input-error-message" data-testid="error-msg">{validationMessage}</small>
       )}
     </label>
   );

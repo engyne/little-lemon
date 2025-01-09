@@ -40,5 +40,4 @@ test('Calls correctly the onClick prop function passed in', () => {
     fireEvent.click(button);
 
     expect(onClick).toHaveBeenCalled();
-
 });

@@ -5,23 +5,27 @@ export function Footer() {
 
   return (
     <>
-      <footer className="content-center footer">
-        <section>
-          <img src={NavLogo} alt='logo' />
-          <p>Little Lemon</p>
-          <p>123 Citrus Avenue</p>
-          <p>Sunnydale, CA 90210</p>
-          <p>USA</p>
-        </section>
-        <section>
-          <ul>
-            <li>Contact</li>
-            <li>About</li>
-          </ul>
-        </section>
-        <small>
-      Copyright © 2023 Football History Archives. All Rights Reserved.
-    </small>
+      <footer className="footer">
+        <div class="container content-center">
+          <section>
+            <img src={NavLogo} alt='logo' />
+            <ul>
+              <li>Little Lemon</li>
+              <li>123 Citrus Avenue</li>
+              <li>Sunnydale, CA 90210</li>
+              <li>USA</li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>Contact</li>
+              <li>About</li>
+            </ul>
+          </section>
+          <small>
+            Copyright © 2023 Football History Archives. All Rights Reserved.
+          </small>
+        </div>
       </footer>
     </>
   )

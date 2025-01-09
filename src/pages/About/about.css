@@ -1,12 +1,14 @@
 .about {
   padding-block: 32px;
+  margin-top: 100px;
 
-  h1, h2 {
-    margin-bottom: 8px;
+  h1 {
+    margin-bottom: 32px;
   }
 
   h2 {
     font-size: 18px;
+    margin-bottom: 8px;
   }
 
   > p {
